@@ -18,3 +18,8 @@ tutorials
 https://www.youtube.com/watch?v=a48xeeo5Vnk
 https://www.youtube.com/watch?v=UmljXZIypDc
 https://www.youtube.com/watch?v=qDwdMDQ8oX4&t=124s
+
+
+STUCK HERE  - https://www.youtube.com/watch?v=q4jPR-M0TAQ
+
+CAnt get crispy to be recognized for some reason 
