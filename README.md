@@ -3,6 +3,19 @@
 IMPORTANT
 added requirements.txt file, whenever you open up a virtual env run pip3 install -r requirements.txt real quick to get all dependencies
 
+save downloads with  pip freeze > requirements. txt.
+
+
+pip3 install virtualenv globally
+cd into project and run virtualenv env
+
+source env/bin/activate to activate virtual env
+
+deactivate to deactivate 
+
+once you boot up virtualenv run pip3 install -r requirements.txt
+
+
 Django stuff
 
 you need to install django, idk if installing it within the directory will make it work on your laptop if it doesnt run pip3 install django USE PYTHON3 AND PIP3 FOR EVERYTHING
