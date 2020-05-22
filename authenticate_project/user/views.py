@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .forms import UserDataForm
+from .main import verify_and_send
 # Create your views here.
 
 def register(request):
@@ -17,7 +19,18 @@ def register(request):
 	return render(request, 'user/register.html', {'form': form})
 
 def employee(request):
-	return render(request, 'user/employee.html')
+	# need to create a custom form
+	if request.method == 'POST':
+		form = UserDataForm(request.POST)
+		if form.is_valid():
+			# TODO: POC logic goes here
+			verify_and_send(form)
+			#form.save() # TODO: once we make the form a ModelForm, this should work
+			messages.success(request, f'success')
+			return redirect('login') ###
+	else:
+		form = UserDataForm()
+	return render(request, 'user/employee.html', {'form': form})
 
 def reroute(request):
 	return render(request, 'user/reroute.html')
