@@ -1,5 +1,7 @@
 # authenticator-
 
+IMPORTANT
+added requirements.txt file, whenever you open up a virtual env run pip3 install -r requirements.txt real quick to get all dependencies
 
 Django stuff
 
