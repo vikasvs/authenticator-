@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:tempbranch" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9ac852dd-5421-413a-9fd1-7ac89eab0ded" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/authenticate_project/authenticate/templates/authenticate/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate_project/authenticate/templates/authenticate/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authenticate_project/authenticate_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate_project/authenticate_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authenticate_project/authenticate_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate_project/authenticate_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authenticate_project/user/templates/user/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate_project/user/templates/user/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authenticate_project/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate_project/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +63,29 @@
       <updated>1590098286005</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="tempbranch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="2027" y="278" width="670" height="676" key="search.everywhere.popup" timestamp="1590104495755">

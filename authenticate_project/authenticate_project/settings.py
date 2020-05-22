@@ -122,4 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+LOGIN_REDIRECT_URL = 'authenticate-home'
+LOGIN_URL = 'login'
