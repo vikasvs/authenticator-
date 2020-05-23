@@ -35,6 +35,7 @@ def employee(request):
 def reroute(request):
 	return render(request, 'user/reroute.html')
 #decorator that adds functionality saying you have to be logged in to see your profile -PROBABLY WONT NEED 
+
 @login_required
 def profile(request):
 	return render(request, 'user/profile.html')
