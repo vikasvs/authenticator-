@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import UserData
 
 class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
@@ -10,23 +11,13 @@ class UserRegisterForm(UserCreationForm):
 		#fields shown usr, email, password, pwd convifrmation
 		fields = ['username', 'email', 'password1', 'password2']
 
-class UserDataForm(forms.Form):
-	### TODO: this needs some beautifying
-	# TODO: make this a ModelForm so that we can save to DB
-	your_name = forms.CharField()
-	your_email = forms.EmailField()
-	#offer_letter = forms.FileField()
-	role = forms.CharField()
-	company_name = forms.CharField()
-	manager_name = forms.CharField()
-	manager_email = forms.EmailField()
-	recruiter_name = forms.CharField()
-	recruiter_email = forms.EmailField()
-
+class UserDataForm(forms.ModelForm):
 	class Meta:
 		#fields shown usr, email, password, pwd convifrmation
-		fields = ['person_name',
-		'person_email',
+		model = UserData
+		fields = ['your_name',
+		'your_email',
+		'offer_letter',
 		'role',
 		'company_name',
 		'manager_name',

@@ -11,7 +11,7 @@ def register(request):
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
 			form.save()
-			username = form.cleaned_data.get('username')
+			#username = form.cleaned_data.get('username')
 			messages.success(request, f'You can now login!')
 			return redirect('login')
 	else:
@@ -25,9 +25,9 @@ def employee(request):
 		if form.is_valid():
 			# TODO: POC logic goes here
 			verify_and_send(form)
-			#form.save() # TODO: once we make the form a ModelForm, this should work
+			form.save()
 			messages.success(request, f'success')
-			return redirect('login') ###
+			return redirect('profile') ###
 	else:
 		form = UserDataForm()
 	return render(request, 'user/employee.html', {'form': form})
@@ -38,5 +38,15 @@ def reroute(request):
 
 @login_required
 def profile(request):
-	return render(request, 'user/profile.html')
+	if request.method == 'POST':
+		form = UserDataForm(request.POST, request.FILES)
+		if form.is_valid():
+			# TODO: POC logic goes here
+			verify_and_send(form)
+			form.save()
+			messages.success(request, f'success')
+			return redirect('profile') ###
+	else:
+		form = UserDataForm()
+	return render(request, 'user/profile.html', {'form':form})
 
