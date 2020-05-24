@@ -4,7 +4,10 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from .forms import UserDataForm
 from .main import verify_and_send
+import logging
 # Create your views here.
+
+logger = logging.getLogger(__name__)
 
 def register(request):
 	if request.method == 'POST':
@@ -18,16 +21,24 @@ def register(request):
 		form = UserRegisterForm()
 	return render(request, 'user/register.html', {'form': form})
 
+# TODO: replace this
 def employee(request):
 	# need to create a custom form
 	if request.method == 'POST':
 		form = UserDataForm(request.POST)
 		if form.is_valid():
-			# TODO: POC logic goes here
-			verify_and_send(form)
-			form.save()
-			messages.success(request, f'success')
-			return redirect('profile') ###
+			# POC logic goes here
+			a = verify_and_send(form)
+			logger.info("AAAAAA {}".format(a))
+			if verify_and_send(form):
+				form.save()
+				messages.success(request, f'success')
+				return redirect('profile') ###
+			else:
+				print("NOT VALID")
+				form = UserDataForm(request.POST)
+				messages.error(request, 'profile not valid')
+				return redirect('profile') ###
 	else:
 		form = UserDataForm()
 	return render(request, 'user/employee.html', {'form': form})
@@ -42,10 +53,14 @@ def profile(request):
 		form = UserDataForm(request.POST, request.FILES)
 		if form.is_valid():
 			# TODO: POC logic goes here
-			verify_and_send(form)
-			form.save()
-			messages.success(request, f'success')
-			return redirect('profile') ###
+			if verify_and_send(form):
+				form.save()
+				messages.success(request, f'success')
+				return redirect('profile') ###
+			else:
+				form = UserDataForm(request.POST)
+				messages.error(request, f'profile not valid')
+				return redirect('profile') ###
 	else:
 		form = UserDataForm()
 	return render(request, 'user/profile.html', {'form':form})

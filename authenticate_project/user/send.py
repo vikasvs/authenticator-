@@ -6,9 +6,7 @@ import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-DEFAULT_FROM_EMAIL = "kurnoolsaketh@gmail.com"
-
-HIRING_SAMPLE_CONTENT = "<strong>TEST HIRING MANAGER EMAIL</strong>"
+DEFAULT_FROM_EMAIL = "kurnoolsaketh@berkeley.edu"
 
 def send(to, subject, content):
     message = Mail(
@@ -17,7 +15,7 @@ def send(to, subject, content):
         subject=subject,
         html_content=content)
     try:
-        sg = SendGridAPIClient(os.environ.get(""))
+        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
