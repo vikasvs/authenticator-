@@ -2,6 +2,7 @@
 
 
 **Important**
+
 Use Python3 and pip3 for everything
 Download virtualenv - pip3 install virtualenv
 cd into cloned directory
@@ -40,6 +41,7 @@ Within templates, then authenticate is where the frontend happens. Here there ar
 
 
 **tutorials**
+
 https://www.youtube.com/watch?v=a48xeeo5Vnk
 https://www.youtube.com/watch?v=UmljXZIypDc
 https://www.youtube.com/watch?v=qDwdMDQ8oX4&t=124s
