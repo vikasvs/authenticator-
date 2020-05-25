@@ -1,40 +1,45 @@
 # authenticator-
 
-IMPORTANT
-added requirements.txt file, whenever you open up a virtual env run pip3 install -r requirements.txt real quick to get all dependencies
 
-save downloads with  pip freeze > requirements. txt.
+#Important
+Use Python3 and pip3 for everything
+Download virtualenv - pip3 install virtualenv
+cd into cloned directory
+open up a virtual env - source env/bin/activate
+run pip3 install -r requirements.txt to install all dependencies - MAKE SURE YOU DO THIS IN A VIRTUAL ENV
+if you add a download save it to requirements.txt with pip freeze > requirements. txt.
 
-
-pip3 install virtualenv globally
-cd into project and run virtualenv env
-
-source env/bin/activate to activate virtual env
-
-deactivate to deactivate 
-
-once you boot up virtualenv run pip3 install -r requirements.txt
+dont commit from virtual env - run "deactivate" to deactivate it then push
 
 
-Django stuff
+#Stuff that needs to get done
+Infrasturcture
+- design employer side of the application
+- craft email/link structure for employer to send 
 
-you need to install django, idk if installing it within the directory will make it work on your laptop if it doesnt run pip3 install django USE PYTHON3 AND PIP3 FOR EVERYTHING
 
-once you have it you cd into authenticate_project and run python3 manage.py runserver. If yu go to localhost:8000 you should see the home page. There are currently two pages localhost:8000 and localhost:8000/about. 
+backend
+- Verify offer letter - need some method of externally checking the offer letter on our end
+- send email to the employer getting verification and posting on feed
+- make publicly shareable link to profile
+- Need method of adding more than 1 offer letter, should be able to add previous offer letters
+- do we need to validate employers emails
+- if employer gets laid off what do we do with email
 
-Whats in the code/where is stuff
+
+#Django stuff
+
+To run code cd into authenticate_project and run python3 manage.py runserver. If yu go to localhost:8000 you should see the home page.
+
+#Whats in the code/where is stuff
 
 Django works in seperate folders essentially. The authenticate_project folder within the authenticate_project folder is where high level stuff is that ties everything togeter. the authenticate folder is where all the work is realy happening though. urls.py is where we link and attach pages. views.py is where you write backend code and render it through the frontend
 
 Within templates, then authenticate is where the frontend happens. Here there are 3 pages, base, about, and home. every page should be a subset of base, do the bulk of the work there that can be aggregated and do unique work in the other tabs. If you want to add backend play around with views.py, if you want to add frontend play around with the templates
 
 
-tutorials
+#tutorials
 https://www.youtube.com/watch?v=a48xeeo5Vnk
 https://www.youtube.com/watch?v=UmljXZIypDc
 https://www.youtube.com/watch?v=qDwdMDQ8oX4&t=124s
-
-
-STUCK HERE  - https://www.youtube.com/watch?v=q4jPR-M0TAQ
-
-CAnt get crispy to be recognized for some reason 
+https://www.youtube.com/watch?v=609pxEMfung&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=15
