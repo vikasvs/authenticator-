@@ -18,16 +18,19 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from authenticate_project import settings as sett
 from user import views as user_views
+from auth0login import views as auth0_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name = 'register'),
     path('reroute/', user_views.reroute, name = 'reroute'),
     path('employee/', user_views.employee, name = 'employee'),
+    path('index/',auth0_views.index, name = 'index'),
     #path('employee/', user_views.employee, name = 'employee'),
     path('profile/', user_views.profile, name = 'profile'),
-    path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name = 'login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name = 'logout'),
+    #path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name = 'login'),
+    #path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name = 'logout'),
     path('', include('authenticate.urls')),
     path('', include('user.urls')),
+    path('', include('auth0login.urls'))
 ]

@@ -31,9 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 #add everytime you create an app
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
+    'social_django',
+    #'<your application name>'  # such as 'webappexample'
     'authenticate.apps.AuthenticateConfig',
     'user.apps.UserConfig',
+    'auth0login.apps.Auth0LoginConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,6 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'authenticate_project.wsgi.application'
 
+AUTHENTICATION_BACKENDS = {
+    'auth0login.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -122,10 +128,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'user-profile'
-LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = 'user-profile'
+# LOGIN_URL = 'login'
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/dashboard'
+
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+
+
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-y9yub-7p.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'ijU04JjFo9yk0EIKQCKn7aeJF9Y2kxJO'
+SOCIAL_AUTH_AUTH0_SECRET = 'CDG-4SCKb6antK_6WXbauwXKQq_40OxMcaMJx3prhmpS_CFX0hwvc2ToUbmEztOZ'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+
