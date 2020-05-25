@@ -1,4 +1,4 @@
-# authenticator-
+# authenticator
 
 
 **Important**
