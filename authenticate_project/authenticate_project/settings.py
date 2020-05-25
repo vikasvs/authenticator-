@@ -134,7 +134,7 @@ STATIC_URL = '/static/'
 # LOGIN_URL = 'login'
 
 LOGIN_URL = '/login/auth0'
-LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_REDIRECT_URL = '/profile'
 
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
