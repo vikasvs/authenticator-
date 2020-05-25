@@ -13,6 +13,7 @@ dont commit from virtual env - run "deactivate" to deactivate it then push
 
 
 **Stuff that needs to get done**
+
 *Infrasturcture*
 - design employer side of the application
 - craft email/link structure for employer to send 
