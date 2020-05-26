@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'social_django',
     #'<your application name>'  # such as 'webappexample'
     'authenticate.apps.AuthenticateConfig',
-    'user.apps.UserConfig',
+    'users.apps.UsersConfig',
     'auth0login.apps.Auth0LoginConfig',
     'crispy_forms',
     'django.contrib.admin',
@@ -128,13 +128,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# LOGIN_REDIRECT_URL = 'user-profile'
-# LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'user-profile'
+LOGIN_URL = 'login'
 
-LOGIN_URL = '/login/auth0'
-LOGIN_REDIRECT_URL = '/profile'
+# LOGIN_URL = '/login/auth0'
+# LOGIN_REDIRECT_URL = '/dashboard'
 
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 

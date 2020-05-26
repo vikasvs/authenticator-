@@ -10,6 +10,7 @@ class UserRegisterForm(UserCreationForm):
 		model = User
 		#fields shown usr, email, password, pwd convifrmation
 		fields = ['username', 'email', 'password1', 'password2']
+		
 
 class UserDataForm(forms.ModelForm):
 	class Meta:
@@ -17,7 +18,7 @@ class UserDataForm(forms.ModelForm):
 		model = UserData
 		fields = ['your_name',
 		'your_email',
-		'offer_letter',
+		#'offer_letter',
 		'role',
 		'company_name',
 		'manager_name',
