@@ -6,7 +6,7 @@ from .forms import UserDataForm
 from .main import verify_and_send
 import logging
 from users.models import UserData
-from users.models import UserProfile
+from users.models import Employee
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -52,8 +52,8 @@ def reroute(request):
 	return render(request, 'users/reroute.html')
 #decorator that adds functionality saying you have to be logged in to see your profile -PROBABLY WONT NEED 
 
-#TODO
-#want to render the form initially, but after form is filled, want to show offer letter, profile name and such
+#TODO - Verify_and_send may only work with lower version of Django - need to look into this 
+#depending on if you're an employer or employee you want to see different profiles
 @login_required
 def profile(request):
 	# if UserData.form_completion ==False
@@ -61,7 +61,7 @@ def profile(request):
 	username = request.user.username
 	print(username)
 	print(request.user)
-	posts = UserProfile.objects.get()
+	posts = Employee.objects.get()
 	print(posts)
 	print('IVE REACHED HEAR')
 	if posts.form_completion == False:
@@ -84,7 +84,7 @@ def profile(request):
 				#NEED TO SET THIS USERS FORM COMPLETION FIELD TO TRUE
 				posts.form_completion = True
 				posts.save()
-				print(UserProfile.objects.get().form_completion)
+				print(Employee.objects.get().form_completion)
 				return redirect('profile')
 		else:
 			form = UserDataForm()

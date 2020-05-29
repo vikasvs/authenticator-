@@ -40,7 +40,8 @@
                 <a class="nav-item nav-link" href="{% url 'profile' %}">PROFILE</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
               {% else %}
-                <a class="nav-item nav-link" href="/login">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">SIGN IN</a>
         
               {% endif %}
             </div>
