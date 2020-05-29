@@ -64,26 +64,31 @@ def profile(request):
 	posts = UserProfile.objects.get()
 	print(posts)
 	print('IVE REACHED HEAR')
-	for post in posts:
-		print('tgus')
-		print(post.form_completion)
-	if request.method == 'POST':
+	if posts.form_completion == False:
+		print('form has not been filled in')
+		if request.method == 'POST':
 
-		form = UserDataForm(request.POST, request.FILES)
-		if form.is_valid():
-			print("reached")
-			# TODO: POC logic goes here
-			form.save()
-			# if verify_and_send(form):
-			# 	form.save()
-			# 	messages.success(request, f'success')
-			# 	return redirect('profile') ###
-			# else:
-			# 	form = UserDataForm(request.POST)
-			# 	messages.error(request, f'profile not valid')
-			# 	return redirect('profile') ###
-			return redirect('profile')
+			form = UserDataForm(request.POST, request.FILES)
+			if form.is_valid():
+				print("reached")
+				# TODO: POC logic goes here
+				form.save()
+				# if verify_and_send(form):
+				# 	form.save()
+				# 	messages.success(request, f'success')
+				# 	return redirect('profile') ###
+				# else:
+				# 	form = UserDataForm(request.POST)
+				# 	messages.error(request, f'profile not valid')
+				# 	return redirect('profile') ###
+				#NEED TO SET THIS USERS FORM COMPLETION FIELD TO TRUE
+				posts.form_completion = True
+				posts.save()
+				print(UserProfile.objects.get().form_completion)
+				return redirect('profile')
+		else:
+			form = UserDataForm()
+		return render(request, 'users/profile.html', {'form':form})
 	else:
-		form = UserDataForm()
-	return render(request, 'users/profile.html', {'form':form})
+		return render(request, 'users/profile-complete.html')
 
