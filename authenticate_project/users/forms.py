@@ -11,7 +11,7 @@ EMPLOYMENT_OPTIONS= [
     ]
 class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
-	employment_type = forms.CharField(label= 'are you an employer or prospective employee', widget = forms.Select(choices=EMPLOYMENT_OPTIONS))
+	employment_type = forms.CharField(label= 'Are you an employer or prospective employee', widget = forms.Select(choices=EMPLOYMENT_OPTIONS))
 
 	class Meta:
 		model = User
