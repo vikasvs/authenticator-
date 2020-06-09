@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import EmployeeSignUpForm, EmployerSignUpForm, EmployeeDataForm
+from .forms import EmployeeSignUpForm, EmployerSignUpForm, EmployeeDataForm, EmployerDataForm
 import logging
 from django.contrib.auth import get_user_model
-from .models import Employee, User
+from .models import Employee, User, Employer
 from .main import verify_and_send
 
 logger = logging.getLogger(__name__)
@@ -69,42 +69,97 @@ def reroute(request):
 @login_required
 def profile(request):
 	# if UserData.form_completion ==False
-	
-	username = request.user.username
-	print(username)
-	currUser = User.objects.get(username=username)
-	print(currUser)
-	empUser = Employee.objects.get(user = currUser)
-	formStatus = empUser.form_completion
-	print(formStatus)
-	print('IVE REACHED HEAR')
-	if formStatus == False:
-		print('form has not been filled in')
-		if request.method == 'POST':
+	if request.user.is_employee:
+		username = request.user.username
+		print(username)
+		currUser = User.objects.get(username=username)
+		print(currUser)
+		empUser = Employee.objects.get(user = currUser)
+		formStatus = empUser.form_completion
 
-			form = EmployeeDataForm(request.POST, request.FILES)
-			if form.is_valid():
-				print("reached")
-					# TODO: POC logic goes here
-				form.save()
-				# if verify_and_send(form):
-				# 	form.save()
-				# 	messages.success(request, f'success')
-				# 	return redirect('profile') ###
-				# else:
-				# 	form = EmployeeDataForm(request.POST)
-				# 	messages.error(request, f'profile not valid')
-				# 	return redirect('profile') ###
-					#NEED TO SET THIS USERS FORM COMPLETION FIELD TO TRUE
-				empUser.form_completion = True
-				empUser.save()
-				print(empUser.form_completion)
-				return redirect('profile')
+		print(formStatus)
+		print('IVE REACHED HEAR')
+		if formStatus == False:
+			print('form has not been filled in')
+			if request.method == 'POST':
+
+				form = EmployeeDataForm(request.POST, request.FILES)
+				if form.is_valid():
+					print("reached")
+						# TODO: POC logic goes here
+					form.save()
+					# if verify_and_send(form):
+					# 	form.save()
+					# 	messages.success(request, f'success')
+					# 	return redirect('profile') ###
+					# else:
+					# 	form = EmployeeDataForm(request.POST)
+					# 	messages.error(request, f'profile not valid')
+					# 	return redirect('profile') ###
+						#NEED TO SET THIS USERS FORM COMPLETION FIELD TO TRUE
+					empUser.form_completion = True
+					empUser.save()
+					print(empUser.form_completion)
+					return redirect('profile')
+			else:
+				form = EmployeeDataForm()
+			return render(request, 'customUsers/profile.html', {'form':form})
 		else:
-			form = EmployeeDataForm()
-		return render(request, 'customUsers/profile.html', {'form':form})
+			return render(request, 'customUsers/profile-complete.html')
 	else:
-		return render(request, 'customUsers/profile-complete.html')
-
+		username = request.user.username
+		print(username)
+		currUser = User.objects.get(username=username)
+		print(currUser)
+		empUser = Employer.objects.get(user = currUser)
+		formStatus = empUser.form_completion
+		print('IVE REACHED HEAR')
+		if formStatus == False:
+			print('form has not been filled in')
+			if request.method == 'POST':
+				form = EmployerDataForm(request.POST, request.FILES)
+				if form.is_valid():
+					print("reached")
+					form.save()
+					empUser.form_completion = True
+					empUser.save()
+					print(empUser.form_completion)
+					# TODO: need to redirect this to a different profile page altogether
+					return redirect('profile')
+			else:
+				form = EmployerDataForm()
+			return render(request, 'customUsers/profile.html', {'form':form})
+		else:
+			employerPopulate(request)
+			return render(request, 'customUsers/profile-complete.html')
 	# else:
 	# 	return render(request, 'users/profile-complete.html')
+
+
+@login_required
+def employerPopulate(request):
+	username = request.user.username
+	currUser = User.objects.get(username=username)
+	empUser = Employer.objects.get(user = currUser)
+	addy = empUser.your_email
+	employees = Employee.objects.all()
+	for e in employees:
+		if e.your_email == addy:
+			empUser.reccomendation = e.reccomendation
+			# empUser.offer_letter = e.offer_letter
+
+			return render(request, 'customUsers/profile-complete.html')
+	else:
+		#make this an incomplete profile
+		return render(request, 'customUsers/profile-complete.html')
+
+
+
+
+
+
+
+
+
+
+

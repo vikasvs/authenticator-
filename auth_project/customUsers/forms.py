@@ -58,4 +58,15 @@ class EmployeeDataForm(forms.ModelForm):
         'manager_email',
         'recruiter_name',
         'recruiter_email']
-    
+
+
+
+class EmployerDataForm(forms.ModelForm):
+    class Meta:
+        #fields shown usr, email, password, pwd convifrmation
+        model = EmployeeData
+        fields = ['your_name',
+        'your_email',
+        #'offer_letter',
+        'role',
+        'company_name']
