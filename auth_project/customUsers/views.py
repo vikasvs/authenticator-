@@ -88,6 +88,7 @@ def profile(request):
 					print("reached")
 						# TODO: POC logic goes here
 					form.save()
+					populateEmployee(request, form, empUser)
 					# if verify_and_send(form):
 					# 	form.save()
 					# 	messages.success(request, f'success')
@@ -108,12 +109,10 @@ def profile(request):
 			return render(request, 'customUsers/profile-complete.html')
 	else:
 		username = request.user.username
-		print(username)
 		currUser = User.objects.get(username=username)
-		print(currUser)
 		empUser = Employer.objects.get(user = currUser)
 		formStatus = empUser.form_completion
-		print('IVE REACHED HEAR')
+		print('Entered Profile')
 		if formStatus == False:
 			print('form has not been filled in')
 			if request.method == 'POST':
@@ -121,42 +120,86 @@ def profile(request):
 				if form.is_valid():
 					print("reached")
 					form.save()
-					empUser.form_completion = True
-					empUser.save()
-					print(empUser.form_completion)
+					populateEmployer(request, form, empUser)
+
 					# TODO: need to redirect this to a different profile page altogether
 					return redirect('profile')
 			else:
 				form = EmployerDataForm()
 			return render(request, 'customUsers/profile.html', {'form':form})
 		else:
-			employerPopulate(request)
+			EmployeeEmployerUpdate(request, empUser)
 			return render(request, 'customUsers/profile-complete.html')
 	# else:
 	# 	return render(request, 'users/profile-complete.html')
 
 
-@login_required
-def employerPopulate(request):
-	username = request.user.username
-	currUser = User.objects.get(username=username)
-	empUser = Employer.objects.get(user = currUser)
-	addy = empUser.your_email
+"""
+
+Function that takes data from employee who listed employer's email and matches/shares it with the employer
+
+
+"""
+def EmployeeEmployerUpdate(request, current_user):
 	employees = Employee.objects.all()
+	print(current_user.your_email)
 	for e in employees:
-		if e.your_email == addy:
-			empUser.reccomendation = e.reccomendation
-			# empUser.offer_letter = e.offer_letter
-
-			return render(request, 'customUsers/profile-complete.html')
-	else:
-		#make this an incomplete profile
-		return render(request, 'customUsers/profile-complete.html')
+		print(e.recruiter_email)
+		if e.recruiter_email == current_user.your_email:
+			#I want to set ____________ offer letter == offer letter and comment == comment
+			current_user.offer_letter = e.offer_letter
+			current_user.reccomendation = e.reccomendation
+			print('fuck it up')
 
 
+def populateEmployer(request, form, current_user):
+	print('populate employer data')
+
+
+	current_user.your_name = form.cleaned_data['your_name']
+	current_user.your_email = form.cleaned_data['your_email']
+	current_user.company = form.cleaned_data['company_name']
+	current_user.role = form.cleaned_data['role']
+	current_user.form_completion = True
+	current_user.save()
+
+
+	print(current_user.your_name)
+	print(current_user.form_completion)
+	print(current_user.your_email)
 
 
 
+def populateEmployee(request, form, current_user):
+	print('populate employee data')
+
+
+	current_user.your_name = form.cleaned_data['your_name']
+	current_user.your_email = form.cleaned_data['your_email']
+	current_user.company = form.cleaned_data['company_name']
+	current_user.role = form.cleaned_data['role']
+	current_user.manager_name = form.cleaned_data['manager_name']
+	current_user.manager_email = form.cleaned_data['manager_email']
+	current_user.recruiter_name = form.cleaned_data['recruiter_name']
+	current_user.recruiter_email = form.cleaned_data['recruiter_email']
+
+	current_user.form_completion = True
+	current_user.save()
+
+
+
+	print('employee data below')
+
+	print(current_user.your_name)
+	print(current_user.form_completion)
+	print(current_user.your_email)
+
+
+
+
+# def writeReccomendation()
+
+# def validateOfferLetter()
 
 
 

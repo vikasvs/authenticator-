@@ -9,24 +9,12 @@ class User(AbstractUser):
     is_employer = models.BooleanField(default=False)
 
 
-class Employee(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    form_completion = models.BooleanField(default=False)
+class EmployerData(models.Model):
     your_name = models.CharField(max_length=255)
     your_email = models.EmailField()
-    recruiter_email = models.EmailField()
-    reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
-
-#need to add a field for proof of employment
-class Employer(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    form_completion = models.BooleanField(default=False)
-    your_name = models.CharField(max_length=255)
-    your_email = models.EmailField()
-    company = models.CharField(max_length=255)
-    reccomendation = models.CharField(max_length=255,default='No reccomendations yet!')
-    offer_letter = models.FileField(upload_to="documents/", null=True)
-
+    role = models.CharField(max_length=255)
+    company_name = models.CharField(max_length=255)
+    form_completion = models.BooleanField(default = False)
 
 class EmployeeData(models.Model):
     your_name = models.CharField(max_length=255)
@@ -40,18 +28,50 @@ class EmployeeData(models.Model):
     recruiter_email = models.EmailField()
     form_completion = models.BooleanField(default = False)
 
-class EmployerData(models.Model):
+
+class Employee(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    form_completion = models.BooleanField(default=False)
+
     your_name = models.CharField(max_length=255)
     your_email = models.EmailField()
-    role = models.CharField(max_length=255)
+
+    
+    role = models.CharField(max_length=255, default = 'null')
+    company_name = models.CharField(max_length=255, default = 'null')
+    manager_name = models.CharField(max_length=255, default = 'null')
+    manager_email = models.EmailField(default = 'null')
+    recruiter_name = models.CharField(max_length=255, default = 'null')
+    recruiter_email = models.EmailField(default = 'null')
+
+    offer_letter = models.FileField(upload_to="documents/", default = 'null')
+    reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
+
+#need to add a field for proof of employment
+class Employer(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    form_completion = models.BooleanField(default=False)
+    
+    your_name = models.CharField(max_length=255)
+    your_email = models.EmailField()
+    
+    role = models.CharField(max_length=255, null=True)
     company_name = models.CharField(max_length=255)
-    form_completion = models.BooleanField(default = False)
+
+    offer_letter = models.FileField(upload_to="documents/", null=True)
+    reccomendation = models.CharField(max_length=255,default='No reccomendations yet!')
+
+
 
 
 #probably need to fix this when I create an employer
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = Employee.objects.create(user = kwargs['instance'])
+# def create_employee_profile(sender, **kwargs):
+#     if kwargs['created']:
+#         user_profile = Employee.objects.create(user = kwargs['instance'])
         
-        
-post_save.connect(create_profile, sender = User)
+# def create_employer_profile(sender, **kwargs):
+#     if kwargs['created']:
+#         user_profile = Employer.objects.create(user = kwargs['instance'])
+
+# post_save.connect(create_employee_profile, sender = User)
+# post_save.connect(create_employer_profile, sender = User)

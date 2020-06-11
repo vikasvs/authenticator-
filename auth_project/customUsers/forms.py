@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
-from customUsers.models import Employee, User, Employer, EmployeeData
+from customUsers.models import Employee, User, Employer, EmployeeData, EmployerData
 
 class EmployeeSignUpForm(UserCreationForm):
     # interests = forms.ModelMultipleChoiceField(
@@ -64,7 +64,7 @@ class EmployeeDataForm(forms.ModelForm):
 class EmployerDataForm(forms.ModelForm):
     class Meta:
         #fields shown usr, email, password, pwd convifrmation
-        model = EmployeeData
+        model = EmployerData
         fields = ['your_name',
         'your_email',
         #'offer_letter',
