@@ -128,8 +128,10 @@ def profile(request):
 				form = EmployerDataForm()
 			return render(request, 'customUsers/profile.html', {'form':form})
 		else:
+			print(request.user.username)
+
 			EmployeeEmployerUpdate(request, empUser)
-			return render(request, 'customUsers/profile-complete.html')
+			return render(request, 'customUsers/profile-complete.html', {'employerUser': empUser})
 	# else:
 	# 	return render(request, 'users/profile-complete.html')
 

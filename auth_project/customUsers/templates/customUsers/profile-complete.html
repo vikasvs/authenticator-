@@ -4,8 +4,9 @@
       <div class="row">
         <div class="col-md-18">
         	<div class="main">
-				<h1>Here we will display your username, your offer letters and reccomendations</h1>
-				<h1> {{ Employer.your_name }} </h1>
+				
+				<h1> {{ request.user.username }} </h1>
+				<h1> {{ employerUser.company_name }} </h1>
 			</div>
 		</div>
 	</div>

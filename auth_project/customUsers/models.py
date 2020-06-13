@@ -9,6 +9,9 @@ class User(AbstractUser):
     is_employer = models.BooleanField(default=False)
 
 
+    #tmp = models.BooleanField(default=False)
+
+
 class EmployerData(models.Model):
     your_name = models.CharField(max_length=255)
     your_email = models.EmailField()
