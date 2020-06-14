@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from .models import Employee, User, Employer
 from .main import verify_and_send
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 logger = logging.getLogger(__name__)
 # Create your views here.
@@ -141,6 +142,7 @@ def profilePage(request):
         employeeUser = Employee.objects.get(user = currUser)
         userOfferLetter = employeeUser.offer_letter.url
         employeeRec = employeeUser.reccomendation
+        employeeRec += ' - {}'.format(employeeUser.manager_name)
         is_letter_verified = employeeUser.reccomendation[1]
         print("the letter is {}",is_letter_verified )
         return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': employeeRec})
