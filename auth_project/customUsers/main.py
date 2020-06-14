@@ -3,6 +3,7 @@
 from .ingest import ingest_letter
 from .verify import verify_text
 from .send import send
+from django.conf import settings
 
 #ex info line: Neil Palleti,vvsharma21@berkeley.edu,salesforce_offer.pdf,Software Engineer intern,Salesforce,Shivakarthik,kurnoolsaketh@berkeley.edu,idk,idk
 
@@ -13,7 +14,7 @@ def verify_and_send(form):
     
     info = form.cleaned_data
 
-    text = ingest_letter("documents/{}".format(info["offer_letter"]))
+    text = ingest_letter("{}/{}".format(settings.MEDIA_ROOT,info["offer_letter"]))
 
     verify_deets = [info["your_name"],info["company_name"],
     info["manager_name"],info["role"]]

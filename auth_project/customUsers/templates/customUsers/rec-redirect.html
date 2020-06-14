@@ -3,7 +3,7 @@
 {% block content %}
 <div class = "content-section">
 
-  <a href="{{ document.csv_file.url }}" download> Download Offer Letter </a>
+  <a href="{{ document }}" download> Download Offer Letter </a>
 
   <form method = "POST" enctype="multipart/form-data">
 		{% csrf_token %}

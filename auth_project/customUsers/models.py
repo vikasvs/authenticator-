@@ -47,7 +47,7 @@ class Employee(models.Model):
     recruiter_name = models.CharField(max_length=255, default = 'null')
     recruiter_email = models.EmailField(default = 'null')
 
-    offer_letter = models.FileField(upload_to="documents/", default = 'null')
+    offer_letter = models.FileField(upload_to="documents/", default = 'null') # NOTE: filefield should auto generate a url to use
     reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
 
 #need to add a field for proof of employment
