@@ -26,6 +26,7 @@ a{
   background-color: #5f788a;
 }
 
+
 .site-header .navbar-nav .nav-link {
   color: black;
   opacity: 0.5;
@@ -45,7 +46,6 @@ a{
   
   padding: 10px 20px;
   padding-top: 50px;
-  
   margin-bottom: 20px;
 }
 
@@ -100,8 +100,14 @@ a.article-title:hover {
   padding-top: 120px;
   margin-top: 120px;
 }
-.why{
-  font-weight: 1000;
+.xpadding{
+  padding-top: 120px;
+  margin-top: 120px;
 }
 
-
+.locker {
+  position: fixed;
+}
+.scrollable{
+  position = relative
+}
