@@ -64,7 +64,23 @@ class Employer(models.Model):
     offer_letter = models.FileField(upload_to="documents/", null=True)
     reccomendation = models.CharField(max_length=255,default='No reccomendations yet!')
 
+    # list of associated employees, every time the form is submitted, emplUser.employees.add(form.username)
+    
+    
+class PersonRecommendation(models.Model):
+    name = models.CharField(max_length=255, default = 'null')
 
+class Recs(models.Model):
+    name = models.CharField(max_length=255, default = 'null')
+    rec = models.CharField(max_length=400, default = 'null')
+
+
+
+"""
+comment form
+employee name 
+involving some 
+"""
 
 
 #probably need to fix this when I create an employer

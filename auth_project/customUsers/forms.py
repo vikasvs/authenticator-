@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
-from customUsers.models import Employee, User, Employer, EmployeeData, EmployerData
+from customUsers.models import Employee, User, Employer, EmployeeData, EmployerData, PersonRecommendation, Recs
 
 class EmployeeSignUpForm(UserCreationForm):
     # interests = forms.ModelMultipleChoiceField(
@@ -51,7 +51,7 @@ class EmployeeDataForm(forms.ModelForm):
         model = EmployeeData
         fields = ['your_name',
         'your_email',
-        #'offer_letter',
+        'offer_letter',
         'role',
         'company_name',
         'manager_name',
@@ -70,3 +70,20 @@ class EmployerDataForm(forms.ModelForm):
         #'offer_letter',
         'role',
         'company_name']
+
+# class displayAssociatedEmployees(forms.ModelForm):
+#     class Meta:
+#         model = Employer
+#         fields = ['associatedEmployees']
+
+
+class PersonRecommendationForm(forms.ModelForm):
+    class Meta:
+        model = PersonRecommendation
+        fields = ['name']
+
+
+class RecommendationForm(forms.ModelForm):
+    class Meta:
+        model = Recs
+        fields = ['rec']

@@ -25,9 +25,11 @@ urlpatterns = [
     path('reroute/', user_views.reroute, name = 'reroute'),
     #path('employee/', user_views.employee, name = 'employee'),
     #path('employee/', user_views.employee, name = 'employee'),
+    path('profile-complete/', user_views.profilePage, name = 'profile-complete'),
     path('profile/', user_views.profile, name = 'profile'),
     path('login/', auth_views.LoginView.as_view(template_name='customUsers/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='customUsers/logout.html'), name = 'logout'),
+    path('rec-redirect/',user_views.RecommendationRedirect, name = 'rec-redirect'),
     path('', include('customUsers.urls')),
     path('', include('authHome.urls'))
 ]

@@ -27,24 +27,24 @@ def verify_and_send(form):
         return False
 
     # send confirmation email to person
-    info_values = list(info.values())
-    content = "<strong>Here's what we receieved from you:</strong>\
-        <br>your name: {}\
-        <br>your email: {}\
-        <br>role: {}\
-        <br>company name: {}\
-        <br>manager name: {}\
-        <br>manager email: {}\
-        <br>recruiter name: {}\
-        <br>recruiter email: {}".format(info_values[0],
-                                info_values[1],
-                                info_values[3],
-                                info_values[4],
-                                info_values[5],
-                                info_values[6],
-                                info_values[7],
-                                info_values[8])
+    #info_values = list(info.values())
+    # content = "<strong>Here's what we receieved from you:</strong>\
+    #     <br>your name: {}\
+    #     <br>your email: {}\
+    #     <br>role: {}\
+    #     <br>company name: {}\
+    #     <br>manager name: {}\
+    #     <br>manager email: {}\
+    #     <br>recruiter name: {}\
+    #     <br>recruiter email: {}".format(info_values[0],
+    #                             info_values[1],
+    #                             info_values[3],
+    #                             info_values[4],
+    #                             info_values[5],
+    #                             info_values[6],
+    #                             info_values[7],
+    #                             info_values[8])
 
-    send(info["your_email"],"[AUTHENTICATOR] Confirmation",content)
+    #send(info["your_email"],"[AUTHENTICATOR] Confirmation",content)
     return True
     
