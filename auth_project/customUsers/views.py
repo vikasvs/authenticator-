@@ -142,10 +142,10 @@ def profilePage(request):
         employeeUser = Employee.objects.get(user = currUser)
         userOfferLetter = employeeUser.offer_letter.url
         employeeRec = employeeUser.reccomendation
-        employeeRec += '<br> - {}'.format(employeeUser.manager_name) # NOTE: this is a security flaw lmao
+        employeeRec += ' - {}'.format(employeeUser.manager_name)
         is_letter_verified = employeeUser.reccomendation[1]
         print("the letter is {}",is_letter_verified )
-        return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': mark_safe(employeeRec)}) # NOTE: this is a security flaw lmao
+        return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': employeeRec})
 
     else:
        
