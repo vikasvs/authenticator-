@@ -68,11 +68,11 @@ class Employer(models.Model):
     
     
 class PersonRecommendation(models.Model):
-    name = models.CharField(max_length=255, default = 'null')
+    name = models.CharField(max_length=255, default = '')
 
 class Recs(models.Model):
-    name = models.CharField(max_length=255, default = 'null')
-    rec = models.CharField(max_length=400, default = 'null')
+    name = models.CharField(max_length=255, default = '')
+    rec = models.CharField(max_length=400, default = '')
 
 
 

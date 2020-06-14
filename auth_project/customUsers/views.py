@@ -168,24 +168,31 @@ def profilePage(request):
 #redirect to individuals personalized data
 #here we show user attributes like offer letter, and reccomendation 
 
+
 def RecommendationRedirect(request):
-    print(global_curr_employee)
-    print(request.body)
-    print(request.POST)
-    print('BIDDIE')
+    username = request.user.username
+    currUser = User.objects.get(username=username)
+    employerUser = Employer.objects.get(user = currUser)
     form = RecommendationForm(request.POST, request.FILES)
     if request.method == 'POST':
         form = RecommendationForm(request.POST)
         if form.is_valid():
-            
-            return redirect('profilePage')
+            print('entered valid loop')
+            employeeUser = Employee.objects.get(user=User.objects.get(username=global_curr_employee))
+            print(employeeUser.your_name)
+            employerUser.offer_letter = employeeUser.offer_letter
+            print(form.cleaned_data)
+            employeeUser.reccomendation = form.cleaned_data
+            print(employeeUser.reccomendation)
+            employeeUser.save()
+            employerUser.save()
+            return redirect('profile-complete')
     else:
         form = RecommendationForm()
 
     # username = request.user.username
     # currUser = User.objects.get(username=username)
     # empUser = Employer.objects.get(user = currUser)
-    print(Employee.objects.all())
     currUser = User.objects.get(username=global_curr_employee)
     print(currUser)
     #print(Employee.objects.get(user=global_curr_employee))
