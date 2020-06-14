@@ -1,5 +1,7 @@
 {% extends "authHome/base.html" %}
 {% block content %}
+
+<div class = main>
 	<h2> You have been logged out</h2>
 		
 	<div class = "border-top pt-3">
@@ -7,6 +9,7 @@
 			<a href = "{% url 'login' %}">Log In Again</a>
 		</small>
 	</div>
+</div>
 </div>
 {% endblock content %}
 

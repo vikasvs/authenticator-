@@ -106,7 +106,8 @@ def profile_data(request):
                 form = EmployeeDataForm()
             return render(request, 'customUsers/profile-data.html', {'form':form})
         else:
-            return render(request, 'customUsers/profile-complete.html')
+            print('WHAT THE JESUS ')
+            return redirect('profile-redirect')
     else:
         username = request.user.username
         currUser = User.objects.get(username=username)
@@ -133,28 +134,40 @@ def profile_data(request):
 global_curr_employee = None
 def profilePage(request):
     #assuming redirect from profile passes the same request to here
-    
-    username = request.user.username
-    currUser = User.objects.get(username=username)
-    empUser = Employer.objects.get(user = currUser)
-    employee_list = EmployeeEmployerUpdate(request, empUser)
-    form = NoModelPersonRecommendationForm(request.POST, request.FILES)
-    print(employee_list)
-    if request.method == 'POST':
-        form = NoModelPersonRecommendationForm(request.POST)
-        if form.is_valid() and form.cleaned_data.get('name_of_employee') in [e.your_name for e in employee_list]:
-        #if form.is_valid() and form.cleaned_data.get('name') in [e.your_name for e in employee_list]:
-            global global_curr_employee # TODO: get rid of this eventually, but maybe nah lmao
-            global_curr_employee = form.cleaned_data.get('name_of_employee')
-            return redirect('rec-redirect')
-        else:
-            form = NoModelPersonRecommendationForm(request.POST)
-            messages.error(request, 'you are not authorized to recommend this person')
-            return redirect('profile-complete')
+    if request.user.is_employee:
+        print('BIDDIE')
+        username = request.user.username
+        currUser = User.objects.get(username=username)
+        employeeUser = Employee.objects.get(user = currUser)
+        userOfferLetter = employeeUser.offer_letter.url
+        employeeRec = employeeUser.reccomendation
+        is_letter_verified = employeeUser.reccomendation[1]
+        print("the letter is {}",is_letter_verified )
+        return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': employeeRec})
+
     else:
-        form = NoModelPersonRecommendationForm()
-        #form = PRecommendation()
-    return render(request, 'customUsers/profile-complete.html',{'employerUser': empUser,'employee_list': employee_list, 'form':form})
+       
+        username = request.user.username
+        currUser = User.objects.get(username=username)
+        empUser = Employer.objects.get(user = currUser)
+        employee_list = EmployeeEmployerUpdate(request, empUser)
+        form = NoModelPersonRecommendationForm(request.POST, request.FILES)
+        print(employee_list)
+        if request.method == 'POST':
+            form = NoModelPersonRecommendationForm(request.POST)
+            if form.is_valid() and form.cleaned_data.get('name_of_employee') in [e.your_name for e in employee_list]:
+            #if form.is_valid() and form.cleaned_data.get('name') in [e.your_name for e in employee_list]:
+                global global_curr_employee # TODO: get rid of this eventually, but maybe nah lmao
+                global_curr_employee = form.cleaned_data.get('name_of_employee')
+                return redirect('rec-redirect')
+            else:
+                form = NoModelPersonRecommendationForm(request.POST)
+                messages.error(request, 'you are not authorized to recommend this person')
+                return redirect('profile-complete')
+        else:
+            form = NoModelPersonRecommendationForm()
+            #form = PRecommendation()
+        return render(request, 'customUsers/profile-complete.html',{'employerUser': empUser,'employee_list': employee_list, 'form':form})
 
     # return render(request, 'customUsers/profile-complete.html', {'links': templist})
     # form = displayAssociatedEmployees(request.POST, request.FILES)
@@ -176,7 +189,8 @@ def RecommendationRedirect(request):
             print(employeeUser.your_name)
             employerUser.offer_letter = employeeUser.offer_letter
             print(form.cleaned_data)
-            employeeUser.reccomendation = form.cleaned_data
+            print('the clean recc is {}', form.cleaned_data['reccomendation'])
+            employeeUser.reccomendation = form.cleaned_data['reccomendation']
             print(employeeUser.reccomendation)
             employeeUser.offer_letter_is_verified = form.cleaned_data['offer_letter_validity']
             print(' the form is {}', form.cleaned_data['offer_letter_validity'])

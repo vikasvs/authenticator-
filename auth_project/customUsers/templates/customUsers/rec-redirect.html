@@ -1,22 +1,84 @@
-{% extends "authHome/base.html" %}
+
+
 {% load crispy_forms_tags %}
-{% block content %}
-<div class = "content-section">
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
 
-  <a href="{{ document }}" download> Download Offer Letter </a>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <form method = "POST" enctype="multipart/form-data">
-		{% csrf_token %}
-		<fieldset class = form-group>
-			<legend class = "border-bottom mb-4"> Please provide the following info:</legend>
-			{{ form|crispy}}
-		</fieldset>
-		<div class = "form-group">
-			<button class = "btn btn-outline-info" type = "submit">Submit</button>
-		</div>
-	</form>
-</div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,800&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" type = "text/css" href="{% static 'authHome/main.css' %}">
+	{% if title%}
+		<title>Authenticator - {{ title }}</title>
+	{% else %}
+		<title> Authenticator </title>
+	{% endif %}
+</head>
+
+<header class="site-header">
+      <nav class="navbar navbar-expand-md navbar fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Authenticator(Name under review)</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a></a>
+              <a></a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'profile-data' %}">PROFILE</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN IN</a>
+        
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+<main class="container">
+	<div class="row">
 	
-{% endblock content %}
+    <div class="col-sm-10">
+		<div class="main">
+			<form method = "POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<fieldset class = form-group>
+					
+					{{ form|crispy}}
+					<div>
+						<a href="{{ document }}" download> Download Offer Letter </a>
+					</div>
+				</fieldset>
+				
+				<div class = "form-group">
+					
+					<button class = "btn btn-outline-info"  href = "{% url 'rec-redirect' %}" type = "submit">Submit</button>
+				</div>
+			</form>
+		</div>
+		
+    </div>
+ 
+
+</main>
 
 
+
+</html>

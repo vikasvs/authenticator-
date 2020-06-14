@@ -1,9 +1,15 @@
 {% extends "authHome/base.html" %}
 
 {% block content %}
-<h1> Are you an 
-	<a class="nav-item nav-link" href="{% url 'register-employee' %}">employee</a> or
-	<a class="nav-item nav-link" href="{% url 'register-employer' %}">employer</a>
-</h1>
+<div class="main">
+<div class = "content-section">
+	<div class = "why">
+	<div class = "text-center"> 
+		<a class="nav-item nav-link" href="{% url 'register-employee' %}">employee</a> 
+		<a class="nav-item nav-link" href="{% url 'register-employer' %}">employer</a>
+	</div>
+</div>
+</div>
+</div>
 
 {% endblock content %} 

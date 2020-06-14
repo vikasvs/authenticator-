@@ -42,10 +42,10 @@ a{
 }
 
 .content-section {
-  background: #ffffff;
+  
   padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
+  padding-top: 50px;
+  
   margin-bottom: 20px;
 }
 
@@ -100,13 +100,8 @@ a.article-title:hover {
   padding-top: 120px;
   margin-top: 120px;
 }
-
-.form-group{
-  padding-top: 120px;
-  margin-top: 120px;
-  padding-left: 400px;
+.why{
+  font-weight: 1000;
 }
 
-.blocks{
-  padding-left: 420px;
-}
+

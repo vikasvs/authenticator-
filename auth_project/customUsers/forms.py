@@ -91,7 +91,7 @@ class EmployerDataForm(forms.ModelForm):
 
 class RecommendationForm(forms.Form):
     reccomendation = forms.CharField(label='Write a brief recommendation speaking to this candidates skills and qualifications below', max_length=400)
-    offer_letter_validity = forms.BooleanField(label='Is this offer letter the offer letter your company authorized?',required=True) 
+    offer_letter_validity = forms.BooleanField(label='Is the offer letter below the offer letter your company authorized?',required=True) 
 
 class NoModelPersonRecommendationForm(forms.Form):
     name_of_employee = forms.CharField(label='Which employee would you like to verify?', max_length=100)

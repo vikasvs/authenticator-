@@ -56,27 +56,27 @@
     <div class="col-sm-5">
 		<div class="main">
 			
-			<h1> {{ request.user.username }} </h1>
-			<h1> {{ employerUser.company_name }} </h1>
-			<legend class = "border-bottom mb-4"> </legend>
-			{% for e in employee_list %}
-				<h5>{{e.your_name}} </h5> 
-			{% endfor %}
+			<h1> {{ employeeUser.your_name }} </h1>
+            <h1>Organization: {{ employeeUser.company_name }} </h1>
+			
 		</div>	
     </div>
     <div class="col-sm-5">
 		<div class="main">
-			<form method = "POST" enctype="multipart/form-data">
-				{% csrf_token %}
-				<fieldset class = form-group>
-					
-					{{ form|crispy}}
-				</fieldset>
-				<div class = "form-group">
-					<button class = "btn btn-outline-info"  href = "{% url 'rec-redirect' %}" type = "submit">Submit</button>
-				</div>
-			</form>
-		</div>
+            <div>
+                <h2> Offer Letter</h2>
+                <a href="{{ document }}" download> Download Offer Letter </a>
+                
+            </div>
+            <div class = "mt-4">
+                <h2> Recommendations</h2>
+                <div class = "mt-4">
+                    <p>{{rec}}</p>
+                    <p> - {{employeeUser.manager_name}}</p>
+                </div>
+            </div>
+			
+		</div>	
     </div>
  
 
