@@ -29,7 +29,7 @@ urlpatterns = [
     #path('employee/', user_views.employee, name = 'employee'),
     path('login/', auth_views.LoginView.as_view(template_name='customUsers/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='customUsers/logout.html'), name = 'logout'),
-
+    path('about/', auth_views.LogoutView.as_view(template_name='customUsers/about.html'), name = 'about'),
     path('profile-complete/', user_views.profilePage, name = 'profile-complete'),
     path('profile-data/', user_views.profile_data, name = 'profile-data'),
     path('rec-redirect/',user_views.RecommendationRedirect, name = 'rec-redirect'),
