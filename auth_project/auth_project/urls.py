@@ -23,15 +23,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', user_views.register, name = 'register'),
+    path('register-employee/', user_views.register_employee, name = 'register-employee'),
     path('register-employer/', user_views.register_employer, name = 'register-employer'),
     path('reroute/', user_views.reroute, name = 'reroute'),
     #path('employee/', user_views.employee, name = 'employee'),
-    #path('employee/', user_views.employee, name = 'employee'),
-    path('profile-complete/', user_views.profilePage, name = 'profile-complete'),
-    path('profile/', user_views.profile, name = 'profile'),
     path('login/', auth_views.LoginView.as_view(template_name='customUsers/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='customUsers/logout.html'), name = 'logout'),
+
+    path('profile-complete/', user_views.profilePage, name = 'profile-complete'),
+    path('profile-data/', user_views.profile_data, name = 'profile-data'),
     path('rec-redirect/',user_views.RecommendationRedirect, name = 'rec-redirect'),
     path('', include('customUsers.urls')),
     path('', include('authHome.urls'))
@@ -39,3 +39,11 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+"""
+Profile complete should be renamed to profile
+Profile should be renamed to profile-data
+rec-redirect should be renamed to like employee-recomendation+
+
+"""

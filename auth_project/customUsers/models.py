@@ -49,6 +49,7 @@ class Employee(models.Model):
 
     offer_letter = models.FileField(upload_to="documents/", default = 'null') # NOTE: filefield should auto generate a url to use
     reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
+    offer_letter_is_verified = models.BooleanField(default=False)
 
 #need to add a field for proof of employment
 class Employer(models.Model):
@@ -66,15 +67,6 @@ class Employer(models.Model):
 
     # list of associated employees, every time the form is submitted, emplUser.employees.add(form.username)
     
-    
-class PersonRecommendation(models.Model):
-    name = models.CharField(max_length=255, default = '')
-
-class Recs(models.Model):
-    name = models.CharField(max_length=255, default = '')
-    rec = models.CharField(max_length=400, default = '')
-
-
 
 """
 comment form

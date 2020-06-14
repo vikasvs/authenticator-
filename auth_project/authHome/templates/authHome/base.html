@@ -37,7 +37,7 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'profile' %}">PROFILE</a>
+                <a class="nav-item nav-link" href="{% url 'profile-data' %}">PROFILE</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
