@@ -2,7 +2,6 @@
 body {
   background: #fafafa;
   color: #333333;
-  margin-top: 5rem;
   font-family: Poppins;
 }
 
@@ -21,6 +20,7 @@ a{
 }
 .container{
   margin-top: 25px;
+
 }
 .bg-steel {
   background-color: #5f788a;
@@ -99,15 +99,21 @@ a.article-title:hover {
 .main {
   padding-top: 120px;
   margin-top: 120px;
+
 }
 .xpadding{
   padding-top: 120px;
   margin-top: 120px;
 }
 
-.locker {
-  position: fixed;
+.outline{
+  border-width: thin;
+  border-style: solid;
+  border-color: #e2e2e2c5;
+  border-radius: 10px;
+  width: 70%;
 }
-.scrollable{
-  position = relative
+
+.two{ 
+  display: inline-block; 
 }

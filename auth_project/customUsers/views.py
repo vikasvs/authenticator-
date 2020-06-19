@@ -142,10 +142,12 @@ def profilePage(request):
         employeeUser = Employee.objects.get(user = currUser)
         userOfferLetter = employeeUser.offer_letter.url
         employeeRec = employeeUser.reccomendation
-        employeeRec += ' - {}'.format(employeeUser.manager_name)
-        is_letter_verified = employeeUser.reccomendation[1]
-        print("the letter is {}",is_letter_verified )
-        return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': employeeRec})
+        if (employeeRec != 'No reccomendations yet!'):
+            employeeRec += ' - {}'.format(employeeUser.manager_name)
+        verified_status = employeeUser.offer_letter_is_verified
+        print(employeeUser.reccomendation)
+        print(employeeUser.offer_letter_is_verified)
+        return render(request, 'customUsers/employee-profile.html', {'employeeUser': employeeUser,'document':userOfferLetter, 'rec': employeeRec, 'verified_status':verified_status })
 
     else:
        
@@ -252,13 +254,15 @@ def populateEmployee(request, form, current_user):
 
     current_user.your_name = form.cleaned_data['your_name']
     current_user.your_email = form.cleaned_data['your_email']
-    current_user.company = form.cleaned_data['company_name']
+    current_user.company_name = form.cleaned_data['company_name']
     current_user.role = form.cleaned_data['role']
     current_user.offer_letter = form.cleaned_data['offer_letter']
+    current_user.recruiter_email = form.cleaned_data['recruiter_email']
+
     current_user.manager_name = form.cleaned_data['manager_name']
     current_user.manager_email = form.cleaned_data['manager_email']
     current_user.recruiter_name = form.cleaned_data['recruiter_name']
-    current_user.recruiter_email = form.cleaned_data['recruiter_email']
+    
 
     current_user.form_completion = True
     current_user.save()

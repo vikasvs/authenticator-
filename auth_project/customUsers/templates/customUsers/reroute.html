@@ -2,10 +2,15 @@
 
 {% block content %}
 <div class="main">
-<div class = "content-section">
+	<div class = "outline">
+	<div class = "content-section">
+
 	<div class = "text-center"> 
-		<a class="nav-item nav-link" href="{% url 'register-employee' %}">employee</a> 
-		<a class="nav-item nav-link" href="{% url 'register-employer' %}">employer</a>
+		
+		<a class="nav-item nav-link" style = "font-size: 25px; color: #007bff;" href="{% url 'register-employee' %}">I'm an employee</a> 
+		<a class="nav-item nav-link" style = "font-size: 25px; color: #007bff;" href="{% url 'register-employer' %}">I'm an employer</a>
+		
+	</div>
 	</div>
 </div>
 </div>

@@ -57,16 +57,23 @@
 		<div class="main">
 			
 			<h1> {{ employeeUser.your_name }} </h1>
-            <h1>Organization: {{ employeeUser.company_name }} </h1>
-			
+      <h2>Organization: {{ employeeUser.company_name }} </h2>
+
 		</div>	
     </div>
     <div class="col-sm-5">
 		<div class="main">
             <div>
                 <h2> Offer Letter</h2>
-                <a href="{{ document }}" download> Download Offer Letter </a>
-                
+                <div class = "two">
+                {% if employeeUser.offer_letter_is_verified %}
+                <a href="{{ document }}" download> Download Offer Letter [VERIFIED]</a> 
+
+                {% else %}
+                <a href="{{ document }}" download> Download Offer Letter [NOT VERIFIED YET]</a>
+
+                {% endif %}
+              </div>
             </div>
             <div class = "mt-4">
                 <h2> Recommendations</h2>

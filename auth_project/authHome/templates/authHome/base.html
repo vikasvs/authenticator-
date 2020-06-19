@@ -24,7 +24,7 @@
 <body>
     <header class="site-header">
       <div class = 'wrap'> 
-      <nav class="navbar navbar-expand-md navbar fixed-top">
+      <nav class="navbar navbar-expand-md navbar ">
         <div class="container">
           <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Authenticator(Name under review)</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
     </header>
 
     <main role="main" class="container">
-      <div class = "scrollable"
+
       <div class="row">
         <div class="col-md-8">
           {% if messages %}
@@ -64,7 +64,6 @@
             {% endfor %}
           {% endif %}
           {% block content %}{% endblock %}
-        </div>
         </div>
       </div>
     </main>
