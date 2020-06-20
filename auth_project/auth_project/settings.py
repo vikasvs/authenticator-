@@ -10,15 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+
+#from storage_backends import CustomS3Boto3Storage
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print("BASE_DIR: {}".format(BASE_DIR))
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'documents')
-
-MEDIA_URL = '/documents/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -131,4 +130,26 @@ LOGIN_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+
+AWS_ACCESS_KEY_ID="AKIAW47XIS3S3YHYESOC"
+AWS_SECRET_ACCESS_KEY="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"
+AWS_STORAGE_BUCKET_NAME="django-verifier-offer-letters"
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'custom_users.storage_backends.PublicMediaStorage'
+
+STATIC_LOCATION = 'static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+STATICFILES_STORAGE = 'customUsers.storage_backends.StaticStorage'
+
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+DEFAULT_FILE_STORAGE = 'customUsers.storage_backends.PublicMediaStorage'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+

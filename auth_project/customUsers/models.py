@@ -22,7 +22,7 @@ class EmployerData(models.Model):
 class EmployeeData(models.Model):
     your_name = models.CharField(max_length=255)
     your_email = models.EmailField()
-    offer_letter = models.FileField(upload_to="documents/")
+    offer_letter = models.FileField()
     role = models.CharField(max_length=255)
     company_name = models.CharField(max_length=255)
     manager_name = models.CharField(max_length=255)
@@ -47,7 +47,7 @@ class Employee(models.Model):
     recruiter_name = models.CharField(max_length=255, default = 'null')
     recruiter_email = models.EmailField(default = 'null')
 
-    offer_letter = models.FileField(upload_to="documents/", default = 'null') # NOTE: filefield should auto generate a url to use
+    offer_letter = models.FileField() # NOTE: filefield should auto generate a url to use
     reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
     offer_letter_is_verified = models.BooleanField(default=False)
 
@@ -62,7 +62,7 @@ class Employer(models.Model):
     role = models.CharField(max_length=255, null=True)
     company_name = models.CharField(max_length=255)
 
-    offer_letter = models.FileField(upload_to="documents/", null=True)
+    offer_letter = models.FileField()
     reccomendation = models.CharField(max_length=255,default='No reccomendations yet!')
 
     # list of associated employees, every time the form is submitted, emplUser.employees.add(form.username)

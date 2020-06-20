@@ -5,12 +5,6 @@ from django.db import transaction
 from customUsers.models import Employee, User, Employer, EmployeeData, EmployerData
 
 class EmployeeSignUpForm(UserCreationForm):
-    # interests = forms.ModelMultipleChoiceField(
-    #     queryset=Subject.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple,
-    #     required=True
-    # )
-
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -25,12 +19,6 @@ class EmployeeSignUpForm(UserCreationForm):
 
 
 class EmployerSignUpForm(UserCreationForm):
-    # interests = forms.ModelMultipleChoiceField(
-    #     queryset=Subject.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple,
-    #     required=True
-    # )
-
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -67,27 +55,9 @@ class EmployerDataForm(forms.ModelForm):
         model = EmployerData
         fields = ['your_name',
         'your_email',
-        #'offer_letter',
         'role',
         'company_name']
 
-# class displayAssociatedEmployees(forms.ModelForm):
-#     class Meta:
-#         model = Employer
-#         fields = ['associatedEmployees']
-
-
-# class PersonRecommendationForm(forms.ModelForm):
-#     class Meta:
-#         model = PersonRecommendation
-#         fields = ['name']
-
-
-# class RecommendationForm(forms.ModelForm):
-#     class Meta:
-#         model = Recs
-#         fields = ['rec',
-#         'offer_letter_is_verified']
 
 class RecommendationForm(forms.Form):
     reccomendation = forms.CharField(label='Write a brief recommendation speaking to this candidates skills and qualifications below', max_length=400)

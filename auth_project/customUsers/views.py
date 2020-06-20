@@ -42,7 +42,7 @@ def profile(request):
     return redirect('profile-data')
     return render(request, 'customUsers/base.html')
 
- #### NOTE: IGNORE THIS ####
+ #### NOTE: IGNORE THIS #### - I think we can comment this but honestly cant remember
 def employee(request):
     # need to create a custom form
     if request.method == 'POST':
@@ -140,7 +140,7 @@ def profilePage(request):
         username = request.user.username
         currUser = User.objects.get(username=username)
         employeeUser = Employee.objects.get(user = currUser)
-        userOfferLetter = employeeUser.offer_letter.url
+        userOfferLetter = employeeUser.offer_letter
         employeeRec = employeeUser.reccomendation
         if (employeeRec != 'No reccomendations yet!'):
             employeeRec += ' - {}'.format(employeeUser.manager_name)
@@ -212,6 +212,7 @@ def RecommendationRedirect(request):
     currUser = User.objects.get(username=global_curr_employee)
     print(currUser)
     userOfferLetter = Employee.objects.get(user=currUser).offer_letter.url
+    print("FILE URL: {}".format(userOfferLetter))
     return render(request, 'customUsers/rec-redirect.html', {'form':form, 'document':userOfferLetter})
     #return render(request, 'customUsers/rec-redirect.html', {'form':form})
 
@@ -252,6 +253,7 @@ def populateEmployee(request, form, current_user):
     print('populate employee data')
 
 
+
     current_user.your_name = form.cleaned_data['your_name']
     current_user.your_email = form.cleaned_data['your_email']
     current_user.company_name = form.cleaned_data['company_name']
@@ -263,28 +265,17 @@ def populateEmployee(request, form, current_user):
     current_user.manager_email = form.cleaned_data['manager_email']
     current_user.recruiter_name = form.cleaned_data['recruiter_name']
     
-
+    
     current_user.form_completion = True
     current_user.save()
-
+    print("EMP OFFER_LETTER: {}".format(current_user.offer_letter.url))
 
 
     print('employee data below')
+
+    print(Employee(offer_letter= form.cleaned_data['offer_letter'].offer_letter.url))
 
     print(current_user.your_name)
     print(current_user.form_completion)
     print(current_user.your_email)
     print(current_user.offer_letter)
-
-
-
-
-# def writeReccomendation()
-
-# def validateOfferLetter()
-
-
-
-
-
-
