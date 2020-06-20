@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 #from storage_backends import CustomS3Boto3Storage
 import os
+import secretsauce
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -132,9 +133,9 @@ LOGIN_URL = 'login'
 
 #STATIC_URL = '/static/'
 
-AWS_ACCESS_KEY_ID="AKIAW47XIS3S3YHYESOC"
-AWS_SECRET_ACCESS_KEY="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"
-AWS_STORAGE_BUCKET_NAME="django-verifier-offer-letters"
+AWS_ACCESS_KEY_ID=secretsauce.AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY=secretsauce.AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME=secretsauce.AWS_STORAGE_BUCKET_NAME
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 AWS_S3_FILE_OVERWRITE = False
@@ -152,4 +153,5 @@ DEFAULT_FILE_STORAGE = 'customUsers.storage_backends.PublicMediaStorage'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-
+#https://django-verifier-offer-letters.s3.amazonaws.com/media
+#https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/media/2019.pdf

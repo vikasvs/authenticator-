@@ -50,6 +50,7 @@ class Employee(models.Model):
     offer_letter = models.FileField() # NOTE: filefield should auto generate a url to use
     reccomendation = models.CharField(max_length=255, default='No reccomendations yet!')
     offer_letter_is_verified = models.BooleanField(default=False)
+    offer_letter_name = models.CharField(max_length=255, default = 'null')
 
 #need to add a field for proof of employment
 class Employer(models.Model):

@@ -67,10 +67,11 @@
                 <h2> Offer Letter</h2>
                 <div class = "two">
                 {% if employeeUser.offer_letter_is_verified %}
-                <a href="{{ document }}" download> Download Offer Letter [VERIFIED]</a> 
+                <a href="{{link }}" > Open Offer Letter [VERIFIED]</a> 
 
                 {% else %}
-                <a href="{{ document }}" download> Download Offer Letter [NOT VERIFIED YET]</a>
+                
+                <a href="{{link }}"> Open Offer Letter [NOT VERIFIED YET]</a>
 
                 {% endif %}
               </div>

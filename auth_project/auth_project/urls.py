@@ -37,7 +37,7 @@ urlpatterns = [
     path('', include('authHome.urls'))
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root='media')
+urlpatterns+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
 
 """
 Profile complete should be renamed to profile
