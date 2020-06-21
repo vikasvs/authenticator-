@@ -17,7 +17,6 @@ import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print("BASE_DIR: {}".format(BASE_DIR))
 
 
 # Quick-start development settings - unsuitable for production
@@ -144,7 +143,8 @@ LOGIN_URL = 'login'
 # AWS_SECRET_ACCESS_KEY=secretsauce.AWS_SECRET_ACCESS_KEY
 # AWS_STORAGE_BUCKET_NAME=secretsauce.AWS_STORAGE_BUCKET_NAME
 
-AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_ACCESS_KEY_ID=os.getenv('AWS_ACCESS_KEY_ID')
+print(AWS_ACCESS_KEY_ID)
 AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME=os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
