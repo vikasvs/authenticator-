@@ -39,34 +39,34 @@ def register_employer(request):
         form = EmployerSignUpForm()
     return render(request, 'customUsers/register-employer.html', {'form': form})
 
-#THIS COMMENT MAY FUCK SHIT UP
+#THIS COMMENT MAY MESS IT UP
 def profile(request):
     return redirect('profile-data')
-    return render(request, 'customUsers/base.html')
+    #return render(request, 'customUsers/base.html')
 
  #### NOTE: IGNORE THIS #### - I think we can comment this but honestly cant remember
-def employee(request):
-    # need to create a custom form
-    if request.method == 'POST':
-        form = EmployeeDataForm(request.POST)
-        if form.is_valid():
-            # POC logic goes here
-            if verify_and_send(form):
-                form.save()
-                messages.success(request, f'success')
-                return redirect('profile-data') ###
-            else:
-                print("NOT VALID")
-                form = EmployeeDataForm(request.POST)
-                messages.error(request, 'profile not valid')
-                return redirect('profile-data') ###
-            return redirect('profile-data')
-    else:
-        form = EmployeeDataForm()
-    return render(request, 'users/employee.html', {'form': form})
+# def employee(request):
+#     # need to create a custom form
+#     if request.method == 'POST':
+#         form = EmployeeDataForm(request.POST)
+#         if form.is_valid():
+#             # POC logic goes here
+#             if verify_and_send(form):
+#                 form.save()
+#                 messages.success(request, f'success')
+#                 return redirect('profile-data') ###
+#             else:
+#                 print("NOT VALID")
+#                 form = EmployeeDataForm(request.POST)
+#                 messages.error(request, 'profile not valid')
+#                 return redirect('profile-data') ###
+#             return redirect('profile-data')
+#     else:
+#         form = EmployeeDataForm()
+#     return render(request, 'users/employee.html', {'form': form})
 
-def employer(request):
-    return render(request, 'customUsers/base.html')
+# def employer(request):
+#     return render(request, 'customUsers/base.html')
 
 def reroute(request):
     return render(request, 'customUsers/reroute.html')
