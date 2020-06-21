@@ -16,8 +16,10 @@ cryptography==2.9.2
 decorator==4.4.2
 defusedxml==0.7.0rc1
 distlib==0.3.0
+dj-database-url==0.5.0
 Django==3.0.6
 django-crispy-forms==1.9.1
+django-heroku==0.3.1
 django-storages==1.9.1
 docutils==0.15.2
 ecdsa==0.15
@@ -36,6 +38,7 @@ numpy==1.18.3
 oauthlib==3.1.0
 pathspec==0.8.0
 pipenv==2018.11.26
+psycopg2==2.8.5
 pyasn1==0.4.7
 pycodestyle==2.6.0
 pycparser==2.20
@@ -64,5 +67,6 @@ typed-ast==1.4.1
 urllib3==1.25.9
 virtualenv==20.0.21
 virtualenv-clone==0.5.4
+whitenoise==5.1.0
 wrapt==1.11.2
 zipp==3.1.0
