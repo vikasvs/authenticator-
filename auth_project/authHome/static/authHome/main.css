@@ -117,3 +117,12 @@ a.article-title:hover {
 .two{ 
   display: inline-block; 
 }
+
+.xc{
+  padding-top: 45px;
+}
+
+.pt-5{
+  padding-top: 70px;
+  margin-top: 80px;
+}

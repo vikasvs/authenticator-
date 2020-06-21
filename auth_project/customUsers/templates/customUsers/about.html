@@ -1,13 +1,92 @@
-{% extends "authHome/base.html" %}
-{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
 
-<div class = main>
-	<h1> About Page </h1>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,800&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" type = "text/css" href="{% static 'authHome/main.css' %}">
+	{% if title%}
+		<title>Authenticator - {{ title }}</title>
+	{% else %}
+		<title> Authenticator </title>
+	{% endif %}
+</head>
+
+<header class="site-header">
+      <nav class="navbar navbar-expand-md navbar 	">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Authenticator(Name under review)</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'authenticate-home' %}">HOME</a>
+              <a class="nav-item nav-link" href="{% url 'authenticate-about' %}">ABOUT</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'profile-data' %}">PROFILE</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
+                <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN IN</a>
+        
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+<main class="container">
+	<body>
+		<div class="col-sm-9 pl-5">
+			<div class="main">
+			<h4> 
+				We created this platform during the COVID-19 pandemic, where we noticed many of our friends having their internships rescinded and losing their jobs. We thought with so many qualified individuals who never got an opportunity to show what they could bring to the table at a company, how could they leverage that offer into finding future opportunities. Hence we created this platform, where recruiters/managers can validate prospective employees offer letters, and provide reccomendations on their behalf, giving them great future opportunities.
+			</h4>
+			<h4>
+				If you like the service, or have any general concerns let us know <a href="mailto:vvsharma4@gmail.com", style="font-size: 1.5rem;font-weight: 1000;">here</a>.
+			</h4>
+		</div>
 		
-	<div class = "border-top pt-3">
-		Helping qualified motherfuckers get their jobs back in the corona era and beyond. <br><br> Sak and Kas
-	</div>
-</div>
-</div>
-{% endblock content %}
+			<div class = 'row', style="padding-top: 40px; margin-top: 40px;">
+				<div class="col-sm-4 pl-4", style="padding-bottom: 100px;">
+					
+					<img src="https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/static/proimg/vikas.jpeg", style="width:250px;height:230px; border-radius: 50%;">	
+					<h4> 
+						Vikas Sharma
+					</h4>
+					<a href = "https://www.linkedin.com/in/vikasvsharma/">linkedin</a>
+				</div>
+				<div class="col-sm-4 pl-4"></div>
+				<div class="col-sm-4 pl-4">
+					<img src="https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/static/proimg/saketh.JPG",  style="width:250px;height:230px; border-radius: 50%;">
+					<h4> 
+						Saketh Kurnool
+					</h4>
+					<a href = "https://www.linkedin.com/in/skurnool">linkedin</a>
+				</div>
+				
+	
+		</div>
+    </div>
+</body>
 
+</main>
+
+
+
+</html>
