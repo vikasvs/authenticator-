@@ -13,8 +13,7 @@
 - dont commit from virtual env - run "deactivate" to deactivate it then push
 
 
-**Improvement Possibilities*
-- Support Multiple offer letters
+**Improvement Possibilities**
 - Support Multiple offer letters
 - Support reccomendations per offer letter
 - Support email extensions
