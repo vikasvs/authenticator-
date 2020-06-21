@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 #from storage_backends import CustomS3Boto3Storage
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,7 +131,14 @@ LOGIN_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-#STATIC_URL = '/static/'
+# #STATIC_URL = '/static/'
+# STATIC_URL
+# STATIC_ROOT
+
+# MEDIA_
+
+
+
 
 # AWS_ACCESS_KEY_ID= secretsauce.AWS_ACCESS_KEY_ID
 # AWS_SECRET_ACCESS_KEY=secretsauce.AWS_SECRET_ACCESS_KEY
@@ -156,7 +164,7 @@ PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = 'customUsers.storage_backends.PublicMediaStorage'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+#STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 #https://django-verifier-offer-letters.s3.amazonaws.com/media
 #https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/media/2019.pdf
