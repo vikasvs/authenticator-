@@ -12,6 +12,7 @@ import sys
 sys.path.insert(0,os.path.join(os.getcwd(), "authenticator/auth_project/auth_project"))
 sys.path.insert(0,os.path.join(os.getcwd(), "authenticator/auth_project"))
 print("CWD ******: {}".format(os.getcwd()))
+print("FILE ABSPATH ******: {}".format(os.path.abspath(__file__)))
 
 
 from django.core.wsgi import get_wsgi_application
