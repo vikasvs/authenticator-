@@ -9,7 +9,7 @@ from .models import Employee, User, Employer
 from .main import verify_and_send
 from django.conf import settings
 from django.utils.safestring import mark_safe
-from auth_project.settings import MEDIA_URL
+from auth_project.auth_project.settings import MEDIA_URL
 
 logger = logging.getLogger(__name__)
 # Create your views here.
