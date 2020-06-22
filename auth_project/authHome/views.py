@@ -4,8 +4,8 @@ from django.shortcuts import render
 
 
 def home(request):
-	#request, render page, data
-	return render(request, 'authHome/home.html')
+    # request, render page, data
+    return render(request, 'authHome/home.html')
 
 
 def about(request):

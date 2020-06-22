@@ -19,8 +19,17 @@ a{
   font-size: 14px;
 }
 .container{
-  margin-top: 25px;
-
+  margin-top: 20px;
+  align-content: center;
+  align-self: center;
+}
+.body-container{
+  margin-top: 10%;
+  text-align: center;
+  align-content: center;
+}
+.data-container{
+  align-content: center;
 }
 .bg-steel {
   background-color: #5f788a;
@@ -43,10 +52,10 @@ a{
 }
 
 .content-section {
-  
-  padding: 10px 20px;
+  margin: 0 auto;
+  /* padding: 10px 20px;
   padding-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
 }
 
 .article-title {
@@ -97,9 +106,9 @@ a.article-title:hover {
 }
 
 .main {
-  padding-top: 120px;
-  margin-top: 120px;
-
+  /* padding-top: 120px; */
+  /* margin-top: 120px; */
+  align-content: center;
 }
 .xpadding{
   padding-top: 120px;
@@ -111,7 +120,10 @@ a.article-title:hover {
   border-style: solid;
   border-color: #e2e2e2c5;
   border-radius: 10px;
-  width: 70%;
+  width: 40%;
+  align-content: center;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .two{ 

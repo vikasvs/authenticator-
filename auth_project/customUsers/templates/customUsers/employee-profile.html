@@ -2,90 +2,94 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
 
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,800&display=swap"
+    rel="stylesheet">
 
 
-	<link rel="stylesheet" type = "text/css" href="{% static 'authHome/main.css' %}">
-	{% if title%}
-		<title>Proverify - {{ title }}</title>
-	{% else %}
-		<title> Proverify </title>
-	{% endif %}
+  <link rel="stylesheet" type="text/css" href="{% static 'authHome/main.css' %}">
+  {% if title%}
+  <title>Proverify - {{ title }}</title>
+  {% else %}
+  <title> Proverify </title>
+  {% endif %}
 </head>
 
 <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar"> 
-        <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Proverify</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a></a>
-              <a></a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'profile-data' %}">PROFILE</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
-              {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
-                <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN UP</a>
-        
-              {% endif %}
-            </div>
-          </div>
+  <nav class="navbar navbar-expand-md navbar">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Proverify</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+        aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a></a>
+          <a></a>
         </div>
-      </nav>
-    </header>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'profile-data' %}">PROFILE</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+          {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
+          <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN UP</a>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
 
 <main class="container">
-	<div class="row">
-	
-    <div class="col-sm-5">
-		<div class="main">
-			
-			<h1> {{ employeeUser.your_name }} </h1>
-      <h2>Organization: {{ employeeUser.company_name }} </h2>
+  <div class="row">
 
-		</div>	
+    <div class="col-sm-5">
+      <div class="main">
+
+        <h1> {{ employeeUser.your_name }} </h1>
+        <h2>Organization: {{ employeeUser.company_name }} </h2>
+
+      </div>
     </div>
     <div class="col-sm-5">
-		<div class="main">
-            <div>
-                <h2> Offer Letter</h2>
-                <div class = "two">
-                {% if employeeUser.offer_letter_is_verified %}
-                <a href="{{link }}" > Open Offer Letter [VERIFIED]</a> 
+      <div class="main">
+        <div>
+          <h2> Offer Letter</h2>
+          <div class="two">
+            {% if employeeUser.offer_letter_is_verified %}
+            <a href="{{link }}"> Open Offer Letter [VERIFIED]</a>
 
-                {% else %}
-                
-                <a href="{{link }}"> Open Offer Letter [NOT VERIFIED YET]</a>
+            {% else %}
 
-                {% endif %}
-              </div>
-            </div>
-            <div class = "mt-4">
-                <h2> Recommendations</h2>
-                <div class = "mt-4">
-                    <p>{{rec}}</p>
-                </div>
-            </div>
-			
-		</div>	
+            <a href="{{link }}"> Open Offer Letter [NOT VERIFIED YET]</a>
+
+            {% endif %}
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2> Recommendations</h2>
+          <div class="mt-4">
+            <p>{{rec}}</p>
+          </div>
+        </div>
+
+      </div>
     </div>
- 
+
 
 </main>
 

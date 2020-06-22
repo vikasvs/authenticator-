@@ -1,18 +1,26 @@
 {% extends "authHome/base.html" %}
 
 {% block content %}
-<div class="main">
-	<div class = "outline">
-	<div class = "content-section">
+<div class="body-container">
 
-	<div class = "text-center"> 
-		
-		<a class="nav-item nav-link" style = "font-size: 25px; color: #007bff;" href="{% url 'register-employee' %}">I'm an employee</a> 
-		<a class="nav-item nav-link" style = "font-size: 25px; color: #007bff;" href="{% url 'register-employer' %}">I'm an employer</a>
-		
-	</div>
-	</div>
-</div>
-</div>
+	<main role="main">
+		<div class="row">
 
-{% endblock content %} 
+			<div class="outline">
+				<div class="content-section">
+
+					<div class="text-center">
+
+						<a class="nav-item nav-link" style="font-size: 25px; color: #007bff;"
+							href="{% url 'register-employee' %}">I'm an employee</a>
+						<a class="nav-item nav-link" style="font-size: 25px; color: #007bff;"
+							href="{% url 'register-employer' %}">I'm an employer</a>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</main>
+</div>
+{% endblock content %}

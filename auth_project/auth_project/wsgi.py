@@ -17,6 +17,6 @@ print("FILE ABSPATH ******: {}".format(os.path.abspath(__file__)))
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'auth_project.auth_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_project.settings')
 
 application = get_wsgi_application()
