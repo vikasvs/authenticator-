@@ -23,7 +23,7 @@
 </head>
 
 <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar 	">
+      <nav class="navbar navbar-expand-md navbar ">
         <div class="container">
           <a class="navbar-brand mr-4" href="{% url 'authenticate-home' %}">Proverify</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
                 <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">LOG IN</a>
-                <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN IN</a>
+                <a class="nav-item nav-link" href="{% url 'reroute' %}">SIGN UP</a>
         
               {% endif %}
             </div>
@@ -63,7 +63,7 @@
 		</div>
 		
 			<div class = 'row', style="padding-top: 40px; margin-top: 40px;">
-				<div class="col-sm-4 pl-4", style="padding-bottom: 100px;">
+				<div class="col-sm-4 pl-4", style="padding-bottom: 10%;">
 					
 					<img src="https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/static/proimg/vikas.jpeg", style="width:220px;height:200px; border-radius: 50%;filter: grayscale(90%);">	
 					<h4> 

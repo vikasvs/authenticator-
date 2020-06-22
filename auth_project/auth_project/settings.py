@@ -168,3 +168,5 @@ DEFAULT_FILE_STORAGE = 'customUsers.storage_backends.PublicMediaStorage'
 
 #https://django-verifier-offer-letters.s3.amazonaws.com/media
 #https://django-verifier-offer-letters.s3.us-east-2.amazonaws.com/media/2019.pdf
+
+django_heroku.settings(locals())
