@@ -60,7 +60,7 @@ MIDDLEWARE = [
 
 
 #ROOT_URLCONF = 'auth_project.auth_project.urls'
-ROOT_URLCONF = '.urls'
+ROOT_URLCONF = 'urls'
 
 
 TEMPLATES = [
