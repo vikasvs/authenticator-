@@ -19,4 +19,4 @@ The current iteration only supports these features necessary for MVP
 - Suggested jobs 
 
 ## Components
-- Built using Django, Python with Postgres deployed on Heroku at https://proverify.herokuapp.com/
+Built using Django, Python with Postgres deployed on Heroku at https://proverify.herokuapp.com/
