@@ -1,22 +1,22 @@
-# authenticator
+# Proverify (github project title out of date)
+Proverify is a platform where recruiters/hiring managers and prospective employees can connect to reduce asymmetric information in the hiring process. If you had an offer you did not take, or an offer that was rescinded due to COVID or other externalities, you can get your offer letter verified by your hiring manager/recruiter who issued the offer letter. Then you will be able to share that link in your recruiting cycles, making you a better candidate to prospective employers. Recruiters and prospective employees can join the platform with a simple sign in, and recruiters can offer unlimited reccomendations/validations to help out prospective employees
 
 
-**Important**
+## MVP
+The current iteration only supports these features necessary for MVP
+ - Prospective employee/Hiring manager sign in abilities
+ - Offer letter verification
+ - Ability to give/recieve reccomendations
+ - SendGrid email integration
 
-- Use Python3 and pip3 for everything
-- Download virtualenv - pip3 install virtualenv
-- cd into cloned directory
-- open up a virtual env - source env/bin/activate
-- run pip3 install -r requirements.txt to install all dependencies - MAKE SURE YOU DO THIS IN A VIRTUAL ENV
-- if you add a download save it to requirements.txt with pip freeze > requirements. txt.
-
-- dont commit from virtual env - run "deactivate" to deactivate it then push
-
-
-**Improvement Possibilities**
-- Support Multiple offer letters
+## Improvement Possibilities
+- Freemium Pricing model 
+- Support Multiple offer letters/reccomendations per offer letter
 - Support reccomendations per offer letter
-- Support email extensions
 - Support sharing link to your profile
 - Add dialogue for user to send to their boss
-- Verification of Email address
+- Verification of Email address(Hiring manager side)
+- Suggested jobs 
+
+## Components
+- Built using Django, Python with Postgres deployed on Heroku at https://proverify.herokuapp.com/
